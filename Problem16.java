@@ -1,5 +1,5 @@
 import java.math.BigInteger;
-public class PowerDigitSum{
+public class Problem16{
 	
 	public static void main(String[] args){
 		BigInteger large = new BigInteger("2");

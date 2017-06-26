@@ -1,5 +1,5 @@
 import java.util.*;
-public  class Primes{
+public  class Problem10{
 	
 	public static void main(String[] args){
 

@@ -1,5 +1,5 @@
 import java.math.BigInteger;
-public class FactorialDigit{
+public class Problem20{
 	
 	public static void main(String[] args){
 		BigInteger x = new BigInteger("1");

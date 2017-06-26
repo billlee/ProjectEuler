@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 import java.math.*;
-public class CompareExponentials{
+public class Problem99{
 	public static void main(String[] args) throws IOException{
 		Scanner sc = new Scanner(new File("base_exp.txt"));
 		long max = 0;
