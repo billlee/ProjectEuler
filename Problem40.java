@@ -1,6 +1,6 @@
 import java.lang.StringBuilder;
 
-public class Champernowne{
+public class Problem40{
 	public static void main(String[] args){
 		StringBuilder sb = new StringBuilder(3000000);
 
