@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class MaxPathSum{
+public class Problem18{
 
 	
 	public static void main(String[] args) throws IOException{ 
