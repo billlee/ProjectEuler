@@ -17,10 +17,11 @@ def eightynine(x):
             return 89
         elif x in wrong:
             return 1
-        temp = list(str(x))
-        for j in temp:
-           total += int(j)**2
-
+        while(x > 0):
+            total += (x%10)*(x%10)
+            x /= 10
+        
+        
         p.add(total)
         x = total
     y = y | p
@@ -28,7 +29,7 @@ def eightynine(x):
 
     
 counter = 0
-for i in range(1, 10000000+1):
+for i in range(1, 1000000+1):
     if i in wrong:
         pass
     elif i in y:
