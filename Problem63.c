@@ -13,12 +13,6 @@ int main(){
     int total = 0;
     int k = 1;
    
-
-    
-
-
-
-
     printf("%d\n",total);
     
     
