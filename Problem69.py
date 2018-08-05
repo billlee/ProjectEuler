@@ -1,77 +1,73 @@
-# primeList generates a list of prime factors
-# for x
-def primeList(x): 
-    maxima = (x**0.5)
-    # finalList = [0]*x
-    checkList = [2]
-    #this loop generates all the primes factors to test 
+import time
+
+totientDict = dict()
+
+def primeMaker(x):
+    "all primes under x" 
+    directory = [2]
     isPrime = True
-    for i in range(3, int(maxima) + 1):
-        isPrime= True
+    for i in range(2,x):
+        y = int(i**0.5)+1
+        isPrime = True
         if i%2 == 0:
             pass
         else:
-            for j in range(2,i):
+            for j in range(3, y, 2):
                 if i%j == 0:
                     isPrime = False
-            if isPrime:  
-                checkList.append(i)
+                    break
+            if(isPrime):
+                directory.append(i)
 
-    return checkList 
-    #now we have checkList we can iterate over the bigger list 
+    return directory
 
-    # for i in range(2,x+1):
-        # if i in checkList:
-            # pass
-        # else:
-            # for j in checkList:
-                # if i%j == 0:
-                    # isPrime = False
-            # if isPrime:
-                # finalList.append(i)
-    # return checkList
-
-
-# def recursiveBonanza(primeFactors, x, currentTotient):
-    # for i in primeFactors:
-        # if i > x:
+def totient(number, pVals, pValsChecker):
+    global totientDict
+    isPrime = True
+    if number in pVals:
+        totientDict[number] *= (1 - (1/number))
+        return 0
+    # for i in pValsChecker:
+        # if number%i == 0:
+            # isPrime = False
             # break
-        # elif x%i == 0:
-            # print(currentTotient)
-            # recursiveBonanza(primeFactors, x/i, currentTotient*(i-1))
-
-    # return currentTotient
-
-def totient(x, primeFactors):
-    toeShunt = 1
-    while x != 1:
-        for prime in primeFactors:
-            if x%prime == 0:
-                x = x/prime
-                toeShunt *= prime-1
-    return toeShunt
-
-
+    # if isPrime:
+        # totientDict[number] *= (1-(1/number))
+        # return 0
+    
+    nummy = number
+    while nummy != 1:
+        if number == 2018:
+            print(nummy)
+        for i in pValsChecker:
+           if nummy%i == 0:
+               nummy /= i
+               totientDict[number] *= (1 - (1/i))
+               while(nummy%i == 0):
+                   nummy /= i
+               break
+    return 0 
 
 def main():
-    primeFactors = primeList(1000000)
-    sameThingButSet = set(primeFactors)
-    largeTotientRatio = 0
-    desiredRatio = 0
-    for i in range(2, 1000001):
-        if i in sameThingButSet:
-            if i/(i-1) > largeTotientRatio:
-                largeTotientRatio = i/(i-1)
-                desiredRatio = i
-        else:
-            reduced = i  
-            tempList = [x for x in primeFactors if x < int(0.5**i)]
-            # need to redo recursiveBonanza
-            currentTotient = totient(i,tempList)
-            if (i/currentTotient) > largeTotientRatio:
-                largeTotientRatio = i/currentTotient
-                desiredRatio = i
+    global totientDict
+    t0 = time.time()
+    print("hello")
+    # Hashing Procedure
+    keys = range(1000000)
+    totientDict = dict(zip(keys,keys))
+    pValsChecker = primeMaker(1000000)
+    pVals = set(pValsChecker)
+    desiredval = 0 
+    n = 0
+    for number in range(2,1000000):
+        totient(number, pVals, pValsChecker)
+        print(number, totientDict[number])
+        if(number/totientDict[number] > desiredval):
+            n = number
+            desiredval = number/totientDict[number]
+    print("total time: ", time.time()-t0)
+    print("answer is ", n, desiredval)
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
     main()
