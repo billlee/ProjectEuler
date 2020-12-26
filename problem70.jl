@@ -4,7 +4,6 @@
 #
 #
 #
-#
 function isa_permutation(x::String, y::String)::Bool
     """
     Determines if two strings are permutations of each other
@@ -75,7 +74,6 @@ function solve(max_number::Int32, primes::Array{Int64})::Int32
         test = (test == t) ? test-1 : test
 
         if ((t/test) < mval ) && isa_permutation(string(test), string(t)) 
-           println("The totient of ", t, " is ", test, " with ", t/test)
            desired = t
            mval = t/test
         end 
@@ -114,4 +112,4 @@ function main()
     @time solve(my_max, primes)
 end 
 
-
+main()
